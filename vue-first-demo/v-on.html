@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 指令学习</title>
+</head>
+<body>
+    <!-- 2.html结构 -->
+    <div id="app">
+        <!-- click 点击 -->
+        <input type="button" value="v-on指令" v-on:click="dolt">
+        <input type="button" value="v-on指令简写" @click="dolt">
+        <!-- 双击事件 -->
+        <input type="button" value="双击事件" @dblclick="dolt">
+        <!-- 点击事件 -->
+        <h2 @click="changeFood">{{ food }}</h2>
+    </div>
+    <!-- 1.开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //  3.创建Vue实例
+        var app = new Vue({
+            el:"#app",//el:挂载点 id选择器
+            data:{
+              food:"西兰花炒蛋"
+            },
+            methods:{
+                dolt:function(){
+                    alert("EnjoyToShare!");
+                },
+                changeFood:function(){
+                    //console.log(this.food);
+                    this.food += "好好吃!";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

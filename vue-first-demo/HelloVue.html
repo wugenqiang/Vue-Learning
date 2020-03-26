@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Vue!</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <h2>{{ senior }}</h2>
+        <h2>{{ senior.name }} {{ senior.QQ }}</h2>
+        <!--获取数组标签-->
+        <ul>
+            <li>{{ campus }}</li>
+            <li>{{ campus[0] }}</li>
+            <li>{{ campus[1] }}</li>
+            <li>{{ campus[2] }}</li>
+        </ul>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",//el:挂载点 id选择器
+            data:{//data:数据对象
+                message:"Hello Vue!",
+                senior:{
+                    name:"wugenqiang",
+                    QQ: "2422676183",
+                },
+                campus:["NanJing","ShangHai","JiangXi"],
+            }
+        })
+    </script>
+</body>
+</html>

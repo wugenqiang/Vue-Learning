@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if指令</title>
+</head>
+<body>
+    <!-- 2.html结构 -->
+    <div id="app">
+        <!--方便切换显示状态-->
+        <input type="button" value="切换显示状态" @click="toggleIsShow">
+        <p v-if="isShow">欢迎来到 EnjoyToShare 之家</p>
+        <p v-show="isShow">网址：https://wugenqiang.github.io</p>
+        <!--v-if操作dom元素,v-show改diaplay-->
+        <!--表达式-->
+        <h2 v-if="temperature>=35">热死啦！</h2>
+    </div>
+    <!-- 1.开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //  3.创建Vue实例
+        var app = new Vue({
+            el:"#app",//el:挂载点 id选择器
+            data:{
+                isShow:false,
+                temperature:40,
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isShow = !this.isShow;
+                },
+            }
+        })
+    </script>
+</body>
+</html>

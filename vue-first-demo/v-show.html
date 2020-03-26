@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-show指令</title>
+</head>
+<body>
+    <!-- 2.html结构 -->
+    <div id="app">
+
+        <img src="./static/images/monkey.gif" alt="">
+        <p align="center">看到我上面有猴仔说明1显示</p>
+        <!--根据bool值选择显示状态-->
+        <img v-show="true" src="./static/images/monkey.gif" alt="">
+        <p align="center">看到我上面有猴仔说明2显示</p>
+        <img v-show="false" src="./static/images/monkey.gif" alt="">
+        <p align="center">看到我上面有猴仔说明3显示</p>
+        <!--方便切换显示状态-->
+        <input type="button" value="切换显示状态" @click="changeIsShow">
+        <img v-show="isShow" src="./static/images/monkey.gif" alt="">
+        <!--使用数字限制显示-->
+        <input type="button" value="累加年龄" @click="addAge">
+        <img v-show="age>=18" src="./static/images/monkey.gif" alt="">
+
+    </div>
+    <!-- 1.开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //  3.创建Vue实例
+        var app = new Vue({
+            el:"#app",//el:挂载点 id选择器
+            data:{
+                isShow:false,
+                age:17
+            },
+            methods:{
+                changeIsShow:function(){
+                    this.isShow = !this.isShow;
+                },
+                addAge:function(){
+                    this.age++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
