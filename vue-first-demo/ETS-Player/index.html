@@ -7,58 +7,71 @@
     <title>EnjoyToShare - Player</title>
     <!-- 样式 -->
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="font/css/all.css" />
 </head>
 
 <body>
-    <div class="wrap">
+    <div class="main" id="main">
         <!-- 2.挂载的html结构 -->
         <!-- 播放器主体区域 -->
-        <div class="play_wrap" id="player">
-            <div class="search_bar">
+        <div class="play_wrap" id="player" v-cloak>
+            <div class="search">
                 <img src="images/player_title.png" alt="" />
                 <!-- 搜索歌曲 -->
-                <input type="text" autocomplete="off" v-model="query" @keyup.enter="searchMusic" />
+                <input type="text" v-model="query" @keyup.enter="searchMusic" />
             </div>
             <div class="center_con">
                 <!-- 搜索歌曲列表 -->
                 <div class='song_wrapper'>
                     <ul class="song_list">
-                        <!--<li><a href="javascript:;"></a> <b>你好</b> <span><i></i></span></li>-->
                         <li v-for="item in musicList">
-                            <a href="javascript:;" @click="playMusic(item.id)"></a>
+                            <a class="fas fa-play" href="javascript:;" @click="playMusic(item.id)"></a>
                             <b>{{ item.name }}</b>
-                            <span v-if="item.mvid!=0" @click="playMV(item.mvid)"><i></i></span>
+                            <a class="fab fa-youtube" href="javascript:;"  @click="playMV(item.mvid)" v-if="item.mvid!=0"></a>
                         </li>
                     </ul>
-                    <img src="images/line.png" class="switch_btn" alt="">
                 </div>
+                <img src="images/line.png" class="leftline" alt="">
                 <!-- 歌曲信息容器 -->
                 <div class="player_con" :class="{playing:isPlaying}">
-                    <img src="images/player_bar.png" class="play_bar" />
+                   <!-- <img src="images/player_bar.png" class="play_bar" />-->
+                    <img :src="playerCoverImage" class="play_bar" />
                     <!-- 黑胶碟片 -->
                     <img src="images/disc.png" class="disc autoRotate" />
                     <!--<img src="images/cover.png" class="cover autoRotate" />-->
-                    <img :src="musicCover" class="cover autoRotate" />
+                    <img :src="musicCover==''?'./images/cover.png':musicCover" class="cover autoRotate" />
                 </div>
+                <img src="images/line.png" class="rightline">
                 <!-- 评论容器 -->
                 <div class="comment_wrapper">
-                    <h5 class='title'>热门评论</h5>
-                    <div class='comment_list'>
+                    <h5 class='title' v-show="hotComments.length!=0">热门评论</h5>
+                    <div v-show="hotComments.length!=0" class='comment_list'>
                         <dl v-for="item in hotComments">
                           <dt><img :src="item.user.avatarUrl" alt=""></dt>
                           <dd class="name">{{ item.user.nickname }}</dd>
-                          <dd class="detail">
-                              {{ item.content}}
-                          </dd>
+                          <dd class="id">ID：{{item.user.userId}}</dd>
+                          <dd class="detail">{{ item.content}}</dd>
                       </dl>
                     </div>
-                    <img src="images/line.png" class="right_line">
+                    <div v-show="hotComments.length==0" class="introduction">
+                        <h3>使用说明</h3>
+                        <p>搜索栏输入关键字即可查询歌曲</p>
+                        <p>点击歌曲左侧按钮即可播放歌曲</p>
+                        <p>点击歌曲右侧按钮即可播放 MV</p><br /><br />
+                        <p>　　VPlayer 传送门</p><br />
+                        <p>我的博客：<a href="https://wugenqiang.gitee.io">EnjoyToShare </a></p>
+                        <p>学习笔记：<a href="https://wugenqiang.gitee.io/cs-notes">CS-NoteS </a></p><br />
+                        <p>
+                            <i class="fab fa-vuejs"></i><a href="https://wugenqiang.gitee.io/cs-notes/#/frontend/vue-base-notes">Vue-NoteS </a>
+                            <i class="fab fa-vuejs"></i>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="audio_con">
                 <audio ref='audio'  :src="musicUrl"  @play="play" @pause="pause" controls autoplay loop class="myaudio"></audio>
             </div>
-            <div class="video_con" v-show="isMv" style="display: none;">
+            <div class="video_con" v-show="isMv">
                 <video :src="mvUrl" controls="controls"></video>
                 <div class="mask" @click="closeMv" ></div>
             </div>

@@ -41,12 +41,12 @@ var app = new Vue({
         hotComments:[],
         //动画播放状态
         isPlaying:false,
-        //遮罩层显示状态
-        isShow:false,
         //MV 地址
         mvUrl:"",
         //MV 播放状态
         isMv:false,
+        //播放小件
+        playerCoverImage:"",
     },
     methods:{
         //搜索歌曲
@@ -57,7 +57,7 @@ var app = new Vue({
                 .then(res => {//res=> 等价于 function(response)
                     //console.log(res);
                     that.musicList = res.data.result.songs;
-                    console.log(res.data.result.songs);
+                    //console.log(res.data.result.songs);
                 },err => {})
 
         },
@@ -65,6 +65,7 @@ var app = new Vue({
         playMusic:function (musicId) {
             //console.log(musicId);
             var that = this;
+            this.playerCoverImage="images/player_bar.png";
             //获取歌曲地址
             axios
                 .get("https://autumnfish.cn/song/url?id="+musicId)
@@ -109,7 +110,6 @@ var app = new Vue({
                 .then(res => {//res=> 等价于 function(response) // 回调函数
                     //console.log(res);
                     //console.log(res.data.data.url);
-                    that.isShow = true;
                     that.mvUrl = res.data.data.url;
                     that.musicUrl = "";
                     that.isPlaying = false;
@@ -119,9 +119,8 @@ var app = new Vue({
         },
         //隐藏遮罩层,同时关闭MV
         closeMv:function () {
-            that.isShow = false;
             this.isMv=false;
             this.mvUrl="";
-        }
+        },
     }
 })
