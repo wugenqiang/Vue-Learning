@@ -9,22 +9,33 @@
     <!-- 样式 -->
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" type="text/css" href="font/css/all.css" />
-    <link rel="stylesheet" href="./static/css/me.css">
+    <link rel="stylesheet" href="./css/me.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 </head>
 
 <body>
     <div class="main" id="main">
+        <div class="ui container"><!--container容器带有响应式的效果-->
         <!-- 2.挂载的html结构 -->
         <!-- 播放器主体区域 -->
         <div class="play_wrap" id="player" v-cloak>
             <div class="search">
-                <img src="images/player_title.png" alt="" />
+                <div class="m-mobile-hide"><img src="images/player_title.png" alt="" /></div>
                 <!-- 搜索歌曲 -->
                 <input type="text" v-model="query" @keyup.enter="searchMusic" />
             </div>
-            <div class="center_con">
+            <!-- 搜索歌曲列表 -->
+            <div class='song_wrapper m-mobie-show'>
+                <ul class="song_list">
+                    <li v-for="item in musicList">
+                        <a class="fas fa-play" href="javascript:;" @click="playMusic(item.id)"></a>
+                        <b>{{ item.name }}</b>
+                        <a class="fab fa-youtube" href="javascript:;"  @click="playMV(item.mvid)" v-if="item.mvid!=0"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="center_con m-mobile-hide">
                 <!-- 搜索歌曲列表 -->
                 <div class='song_wrapper'>
                     <ul class="song_list">
@@ -35,9 +46,9 @@
                         </li>
                     </ul>
                 </div>
-                <img src="images/line.png" class="leftline" alt="">
+                <div class="m-mobile-hide"><img src="images/line.png" class="leftline" alt=""></div>
                 <!-- 歌曲信息容器 -->
-                <div class="player_con" :class="{playing:isPlaying}">
+                <div class="player_con m-mobile-hide" :class="{playing:isPlaying}">
                    <!-- <img src="images/player_bar.png" class="play_bar" />-->
                     <img :src="playerCoverImage" class="play_bar" />
                     <!-- 黑胶碟片 -->
@@ -45,9 +56,9 @@
                     <!--<img src="images/cover.png" class="cover autoRotate" />-->
                     <img :src="musicCover==''?'./images/cover.png':musicCover" class="cover autoRotate" />
                 </div>
-                <img src="images/line.png" class="rightline">
+                <div class="m-mobile-hide"><img src="images/line.png" class="rightline"></div>
                 <!-- 评论容器 -->
-                <div class="comment_wrapper">
+                <div class="comment_wrapper m-mobile-hide">
                     <h5 class='title' v-show="hotComments.length!=0">热门评论</h5>
                     <div v-show="hotComments.length!=0" class='comment_list'>
                         <dl v-for="item in hotComments">
@@ -79,6 +90,7 @@
                 <video :src="mvUrl" controls="controls"></video>
                 <div class="mask" @click="closeMv" ></div>
             </div>
+        </div>
         </div>
     </div>
     <!-- 1.开发环境版本，包含了有帮助的命令行警告 -->
