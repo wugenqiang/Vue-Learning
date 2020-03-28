@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="main" id="main">
+    <div class="main">
         <div class="ui container"><!--container容器带有响应式的效果-->
         <!-- 2.挂载的html结构 -->
         <!-- 播放器主体区域 -->
@@ -26,7 +26,7 @@
                 <input type="text" v-model="query" @keyup.enter="searchMusic" />
             </div>
             <!-- 搜索歌曲列表 -->
-            <div class='song_wrapper m-mobie-show'>
+            <div class='song_wrapper_mobile m-mobie-show'>
                 <ul class="song_list">
                     <li v-for="item in musicList">
                         <a class="fas fa-play" href="javascript:;" @click="playMusic(item.id)"></a>

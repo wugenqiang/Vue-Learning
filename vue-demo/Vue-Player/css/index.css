@@ -6,7 +6,6 @@
   display: none!important;
 }
 .main {
-  position: fixed;
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to bottom right, #afb4fd, #d2f6ff);
@@ -61,6 +60,14 @@
   box-sizing: border-box;
   list-style: none;
 }
+
+.song_wrapper_mobile{
+  width: 500px;
+  height: 435px;
+  box-sizing: border-box;
+  list-style: none;
+}
+
 .song_list {
   width: 100%;
   overflow-y: auto;
