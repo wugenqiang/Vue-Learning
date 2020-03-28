@@ -1,0 +1,182 @@
+/*----- me.css designed by wugenqiang -----*/
+
+/*背景图*/
+body{
+    background: url("../images/bg.png");
+}
+
+/*----- set color -----*/
+.m-color-black{
+    color: #333 !important;
+
+}
+/*----- set color end -----*/
+
+/*----- set container -----*/
+
+.m-container{
+    max-width: 72em !important;
+    margin: auto !important;/*水平居中*/
+}
+.m-container-small {
+    max-width: 60em !important;
+    margin: auto !important;
+}
+
+/*----- set container end-----*/
+
+/*----- set margin -----*/
+/*对外部间隔大点*/
+.m-margin-tb-tiny{
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+
+}
+
+.m-margin-top-small{
+    margin-top: 0.5em !important;
+}
+
+.m-margin-top{
+    margin-top: 1em !important;
+}
+
+.m-margin-top-large{
+    margin-top: 2em !important;
+}
+
+
+/*----- set margin end-----*/
+
+/*----- set padded ------*/
+/*对内部间隔小点*/
+.m-padded-mini{
+    padding: 0.2em !important;
+}
+
+.m-padded-tiny{
+    padding: 0.3em !important;
+}
+
+.m-padded-tb-mini{
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+
+.m-padded-tb-tiny{
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
+}
+
+.m-padded-tb-small{
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+.m-padded-tb{
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
+.m-padded-tb-large{
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-padded-tb-big{
+    padding-top: 3em !important;
+    padding-bottom: 3em !important;
+}
+
+.m-padded-tb-huge{
+    padding-top: 4em !important;
+    padding-bottom: 4em !important;
+}
+
+.m-padded-tb-massive{
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+/*----- set padded end------*/
+
+
+
+
+/*----- set text font -----*/
+.m-text{
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8;
+}
+
+/*细一点*/
+.m-text-thin{
+    font-weight: 300 !important;
+}
+/*字间距*/
+.m-text-spaced{
+    letter-spacing: 1px !important;
+}
+/*行间距*/
+.m-text-lined{
+    line-height: 1.8;
+}
+
+/*----- set text font end -----*/
+
+
+/*----- set margin-----*/
+/*透明度*/
+.m-opacity-mini{
+    opacity: 0.8 !important;
+}
+
+.m-opacity-tiny{
+    opacity: 0.6 !important;
+}
+
+/*----- set margin end -----*/
+
+
+/*----- set display 显示的属性 -----*/
+
+.m-inline-block{
+    display: inline-block !important;
+}
+
+/*----- set display 显示的属性 end -----*/
+
+
+/*----- set position 位置 -----*/
+.m-right-top{
+    position: absolute;/*绝对路径布局*/
+    top: 0;
+    right: 0;
+
+}
+
+/*----- set position 位置 end -----*/
+
+
+
+
+
+
+
+
+/*手机端显示，电脑端不显示*/
+.m-mobie-show{
+    display: none !important;
+}
+
+/*----- 媒体查询 -----*/
+/*屏幕小于768px的时候使用*/
+@media screen and (max-width: 768px){
+    .m-mobile-hide{
+        display: none !important;
+    }
+    .m-mobie-show{
+        display: block !important;
+    }
+
+}
