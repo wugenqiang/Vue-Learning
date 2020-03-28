@@ -122,5 +122,9 @@ var app = new Vue({
             this.isMv=false;
             this.mvUrl="";
         },
+    },
+    //添加锚点
+    mounted(){
+        this.searchMusic();
     }
 })
